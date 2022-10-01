@@ -29,13 +29,14 @@ export function selectSquare(model, canvas, event) {
 export function fillSquare(model, direction){
   let selected = model.puzzle.selected;
   if (!selected) { return model;}
- // let isWinning = this.model.puzzle.hasWon();
+  model.puzzle.extendColor(direction)
+ 
   if(model.puzzle.hasWon()===true){
-   model.puzzle.squares = model.puzzle.squares.filter(p => p !==selected);
+  // model.puzzle.squares = model.puzzle.squares.filter(p => p !==selected);
    model.puzzle.selected = null; // Gone!
     model.victorious();
-  } else {
-    model.puzzle.extendColor(direction)
+  //} else {
+    
 
   }
   
@@ -51,7 +52,7 @@ export function movePiece(model, direction) {
   
   if (model.puzzle.hasWon() && direction === model.puzzle.finalMove) {
     model.puzzle.pieces = model.puzzle.pieces.filter(p => p !== selected);
-    model.puzzle.selected = null;  // GONE!
+    //model.puzzle.selected = null;  // GONE!
     model.victorious();
   } else {
     // selected.move(direction);

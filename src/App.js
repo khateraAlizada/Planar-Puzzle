@@ -164,7 +164,7 @@ function App() {
      <label data-testid="victory-label" style={layout.text} className={"display-5 mb-3"}> {model.isVictorious() ? "Congratulations, you won!!!" : "Try more!!!"}</label>
    
     {/* Using '?' construct is proper React way to make image visible only when victorious. */}  
-      { model.isVictorious() ? console.log( "Congratulations You won" ) : null }
+      { model.isVictorious() ? (<label style={layout.victory}> Congrats You won </label>): null}
     <textarea style={layout.inputPuzzle} placeholder="Enter JSON here" rows={5} onChange={updatePuzzle} hidden={!isInputPuzzleVisible}></textarea>
     { isInputPuzzleVisible ? ( <button style={layout.inputPuzzleChange} onClick={changePuzzle} hidden={isInputPuzzleVisible}>Change Puzzle</button> ) : null }
     {/* Configuration buttons*/}
