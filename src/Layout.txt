@@ -20,7 +20,7 @@ export const layout = {
   victory: {
     position: "absolute",
     left: 800,
-    top: 10,
+    top: 20,
     color: "yellow",
     backgroundColor: "#320453",
     width: 150,

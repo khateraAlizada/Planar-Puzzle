@@ -3,6 +3,10 @@ export class Position {
     this.row = row;
     this.column = column;
   }
+
+  isEqual(pos) {
+    return pos.row == this.row && pos.column == this.column;
+  }
 }
 
 export class NeighborType {
@@ -224,7 +228,7 @@ export class Puzzle {
         }
       });
     }
-    console.log(neighbors);
+    // console.log(neighbors);
     return neighbors;
   }
 
@@ -345,7 +349,7 @@ export class Puzzle {
   hasWon() {
     let usedSqs = [];
     usedSqs = this.squares.filter((sq) => sq.unused === false);
-    console.log(usedSqs);
+    //console.log(usedSqs);
 
     // let notUsedsq = []
     //  notUsedsq = this.squares.filter(sq => sq.unused===true);
@@ -360,7 +364,7 @@ export class Puzzle {
       }
     });
 
-    let board_won = true;   // heineman: use new variable and assume we have won unless we find we didn't
+    let board_won = true; // h: use new variable and assume we have won unless we find we didn't
     basesquares.forEach((bs) => {
       let largest = -1;
       let smallest = 99;
@@ -393,7 +397,8 @@ export class Puzzle {
         }
       });
 
-      if (won === false) {   // heineman: this used to 'return false' and that didn't work.
+      if (won === false) {
+        // h: this used to 'return false' and that didn't work.
         board_won = false;
       }
     });
@@ -432,15 +437,8 @@ export default class Model {
         true,
         false
       );
-      //row, column, color, label, unused
     }
 
-    // for (let p of info.squares) {
-    //     allSquares.push(new Square(p.color, parseInt(p.label), (p.unused=== 'true')));
-    //     //row, column, color, label, unused
-    // }
-
-    var unusedSquares = [];
     for (let p of info.unusedSquares) {
       this.puzzle.setInfo(
         parseInt(p.row),
@@ -451,16 +449,6 @@ export default class Model {
       );
     }
 
-    // for (let loc of info.locations) {
-    //     let coord = new Position (parseInt(loc.location.row), parseInt(loc.location.column));
-    //     let idx = allSquares.findIndex(square => (square.label ===loc.square));
-    //     allSquares[idx].place(coord.row, coord.column);
-    // }
-
-    //this.puzzle = new Puzzle(numRows, numColumns)
-
-    // this.puzzle.initialize(allSquares);
-    // this.squares = allSquares;
     this.victory = false;
   }
   victorious() {
@@ -482,25 +470,11 @@ export default class Model {
     }
 
     let allValids = this.puzzle.validExtend();
-    console.log(allValids);
+    //console.log(allValids);
 
-    // HANDLE WINNING CONDITION
-    // if (this.puzzle.hasWon()=== true){
-    //     return true;
-    // };
     // all others come here...
     return allValids.includes(direction);
   }
-  // wood puzzle haswon method in puzzle class
-  //                  hasWon() {
-  //      let idx = this.pieces.findIndex(piece => piece.isWinner);
-  //      return this.destination.row === this.pieces[idx].row && this.destination.column === this.pieces[idx].column;
-  //   }
-  // wood puzzle haswon
-  // HANDLE WINNING CONDITION
-  // if (this.puzzle.selected.isWinner && this.puzzle.selected.row === this.puzzle.destination.row && this.puzzle.selected.column === this.puzzle.destination.column && this.puzzle.finalMove === direction) {
-  //   return true;
-  // }
 
   copy() {
     let m = new Model();

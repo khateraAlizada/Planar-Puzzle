@@ -9,22 +9,25 @@ export const desktopLayout = {
     height: "100vh",
     width: "100vw",
   },
+  text: {
+    position: "absolute",
+    left: 1100,
+    top: 50,
+    color: "yellow",
+    backgroundColor: "#320453",
+    width: 1500,
+  },
 
   buttons: {
     position: "absolute",
-    left: 870,
+    left: 1100,
     top: 150,
   },
 
   configButtons: {
     position: "absolute",
-    left: 600,
-    top: 0,
-  },
-  extraButtons: {
-    position: "absolute",
-    left: 900,
-    top: 980,
+    left: 830,
+    top: 250,
   },
 
   upbutton: {
@@ -34,11 +37,11 @@ export const desktopLayout = {
   },
   victory: {
     position: "absolute",
-    left: 850,
+    left: 1100,
     top: 20,
     color: "yellow",
     backgroundColor: "#320453",
-    width: 150,
+    width: 200,
   },
   downbutton: {
     position: "absolute",
@@ -88,11 +91,6 @@ export const desktopLayout = {
     left: 520,
   },
 
-  inputPuzzleChange: {
-    position: "absolute",
-    top: 500,
-    left: 750,
-  },
   level1button: {
     position: "absolute",
     left: 300,
