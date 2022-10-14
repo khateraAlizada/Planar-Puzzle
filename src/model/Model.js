@@ -15,29 +15,29 @@ export class NeighborType {
     this.deltac = dc;
     this.label = label;
   }
-  static parse(s) {
-    if (s === "down" || s === "Down") {
-      return Down;
-    }
-    if (s === "up" || s === "Up") {
-      return Up;
-    }
-    if (s === "left" || s === "Left") {
-      return Left;
-    }
-    if (s === "right" || s === "Right") {
-      return Right;
-    }
+  // static parse(s) {
+  //   if (s === "down" || s === "Down") {
+  //     return Down;
+  //   }
+  //   if (s === "up" || s === "Up") {
+  //     return Up;
+  //   }
+  //   if (s === "left" || s === "Left") {
+  //     return Left;
+  //   }
+  //   if (s === "right" || s === "Right") {
+  //     return Right;
+  //   }
 
-    return NoMove;
-  }
+   // return NoMove;
+  // }
 }
 
 export const Down = new NeighborType(1, 0, "down");
 export const Up = new NeighborType(-1, 0, "up");
 export const Left = new NeighborType(0, -1, "left");
 export const Right = new NeighborType(0, +1, "right");
-export const NoMove = new NeighborType(0, 0, "*"); // No neighbor
+//export const NoMove = new NeighborType(0, 0, "*"); // No neighbor
 
 export class Square {
   constructor(row, column) {
@@ -53,10 +53,10 @@ export class Square {
     return new Position(this.row, this.column);
   }
 
-  fillColor(color, label) {
-    this.color = color;
-    this.label = label;
-  }
+  // fillColor(color, label) {
+  //   this.color = color;
+  //   this.label = label;
+  // }
 
   location() {
     return new Position(this.row, this.column);
@@ -167,11 +167,11 @@ export class Puzzle {
   }
 
   // return all blocks
-  *blocks() {
-    for (let i = 0; i < this.squares.length; i++) {
-      yield this.squares[i];
-    }
-  }
+  // *blocks() {
+  //   for (let i = 0; i < this.squares.length; i++) {
+  //     yield this.squares[i];
+  //   }
+  // }
   initialize(squares) {
     //make sure to create new piece objects
     this.squares = squares.map((p) => p.copy());
@@ -355,16 +355,19 @@ export class Puzzle {
     //  notUsedsq = this.squares.filter(sq => sq.unused===true);
     // console.log(notUsedsq);
     let basesquares = [];
+    let full = true;
     this.squares.forEach((sq) => {
       if (sq.color === null) {
-        return false;
+        full = false;
       }
       if (sq.baseSquare === true) {
         basesquares.push(sq);
       }
     });
-
-    let board_won = true; // h: use new variable and assume we have won unless we find we didn't
+    if (!full){
+      return false;
+    }
+    let board_won = true; //  use new variable and assume we have won unless we find we didn't
     basesquares.forEach((bs) => {
       let largest = -1;
       let smallest = 99;
@@ -465,9 +468,9 @@ export default class Model {
     if (!this.puzzle.selected) {
       return false;
     }
-    if (direction === NoMove) {
-      return false;
-    }
+    // if (direction === NoMove) {
+    //   return false;
+    // }
 
     let allValids = this.puzzle.validExtend();
     //console.log(allValids);

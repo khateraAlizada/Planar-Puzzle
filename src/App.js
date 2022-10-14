@@ -67,9 +67,9 @@ function App() {
     setModel(newModel);   // react to changes, if model has changed.
   }
   
-  const handleKeyUpEvent = (e) => {
-    isKeyDown = false;
-  }
+  // const handleKeyUpEvent = (e) => {
+  //   isKeyDown = false;
+  // }
   
   
   const resetHandler = () => {
@@ -83,17 +83,17 @@ function App() {
     
     setModel(newModel);   // react to changes, if model has changed.
   }
-  const handleKeyDownEvent = (e) => { 
-    if (isKeyDown) { return; }
-    isKeyDown = true;
+  // const handleKeyDownEvent = (e) => { 
+  //   if (isKeyDown) { return; }
+  //   isKeyDown = true;
     
-    var direction = null;
-    if      ((e.keyCode === 37 || e.keyCode === 65 || e.keyCode === 100) && model.available(Left))  { direction = Left; }
-    else if ((e.keyCode === 38 || e.keyCode === 87 || e.keyCode === 104) && model.available(Up))    { direction = Up; }
-    else if ((e.keyCode === 39 || e.keyCode === 68 || e.keyCode === 102) && model.available(Right)) { direction = Right; }
-    else if ((e.keyCode === 40 || e.keyCode === 83 || e.keyCode === 98)  && model.available(Down))  { direction = Down; }
-    if (direction) { colorSquareHandler(direction); } 
-  }
+  //   var direction = null;
+  //   if      ((e.keyCode === 37 || e.keyCode === 65 || e.keyCode === 100) && model.available(Left))  { direction = Left; }
+  //   else if ((e.keyCode === 38 || e.keyCode === 87 || e.keyCode === 104) && model.available(Up))    { direction = Up; }
+  //   else if ((e.keyCode === 39 || e.keyCode === 68 || e.keyCode === 102) && model.available(Right)) { direction = Right; }
+  //   else if ((e.keyCode === 40 || e.keyCode === 83 || e.keyCode === 98)  && model.available(Down))  { direction = Down; }
+  //   if (direction) { colorSquareHandler(direction); } 
+  // }
   
   // top-level application
   return (
@@ -105,7 +105,7 @@ function App() {
     ref={canvasRef}
     width={layout.canvas.width}
     height={layout.canvas.height}
-    onClick={handleClick} onKeyDown={handleKeyDownEvent} onKeyUp={handleKeyUpEvent} />
+    onClick={handleClick} /*onKeyDown={/*handleKeyDownEvent} onKeyUp={handleKeyUpEvent}*/ />
     
     <label data-testid="victory-text" style={layout.text} className={"display-5 mb-3"}> {model.isVictorious() ? "You won!!!" : "Try more!!!"}</label>
     
